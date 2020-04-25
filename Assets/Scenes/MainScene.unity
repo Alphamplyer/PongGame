@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 381492399}
   m_Layer: 0
   m_Name: Limit-Bottom
-  m_TagString: Terrain
+  m_TagString: TerrainBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 394363061}
   m_Layer: 0
   m_Name: Limit-Left
-  m_TagString: Terrain
+  m_TagString: PlayerOneSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 518653392}
   m_Layer: 0
   m_Name: Limit-Top
-  m_TagString: Terrain
+  m_TagString: TerrainBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 627324142}
   m_Layer: 0
   m_Name: Limit-Right
-  m_TagString: Terrain
+  m_TagString: PlayerTwoSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,6 +683,8 @@ GameObject:
   - component: {fileID: 1578104994}
   - component: {fileID: 1578104993}
   - component: {fileID: 1578104992}
+  - component: {fileID: 1578104997}
+  - component: {fileID: 1578104996}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -710,7 +712,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &1578104993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -801,6 +803,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578104996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578104991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69396d31aee76546b842e18f9427fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKey: 273
+  downKey: 274
+--- !u!114 &1578104997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578104991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e81bcf61664e1a47bdd4092b60ff1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1 &1623005871
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +842,8 @@ GameObject:
   - component: {fileID: 1623005874}
   - component: {fileID: 1623005873}
   - component: {fileID: 1623005872}
+  - component: {fileID: 1623005877}
+  - component: {fileID: 1623005876}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -840,7 +871,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &1623005873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -931,6 +962,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623005876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623005871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69396d31aee76546b842e18f9427fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upKey: 122
+  downKey: 115
+--- !u!114 &1623005877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623005871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e81bcf61664e1a47bdd4092b60ff1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1 &1632432010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,9 +1082,11 @@ GameObject:
   - component: {fileID: 1794394400}
   - component: {fileID: 1794394399}
   - component: {fileID: 1794394398}
+  - component: {fileID: 1794394403}
+  - component: {fileID: 1794394402}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1142,3 +1202,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794394402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794394397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b3e0b3fa98409458d9adfaa9077274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modifierValue: 0.5
+--- !u!114 &1794394403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794394397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e81bcf61664e1a47bdd4092b60ff1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 6
