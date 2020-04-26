@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Alphamplyer.Pong
 {
     [RequireComponent(typeof(MoveVelocity))]
-    public class BallMovement : MonoBehaviour
+    public class BallController : MonoBehaviour
     {
         [SerializeField] private float modifierValue = 0.5f; 
         private Transform _transform;
@@ -57,6 +57,10 @@ namespace Alphamplyer.Pong
             {
                 xDir = -1;
                 _playerOneServeLastTime = false;
+            }
+            else
+            {
+                _playerOneServeLastTime = true;
             }
 
             Vector2 startDirection = RandomUtils.GetRandomRightDirection(-60, 60) * xDir;
