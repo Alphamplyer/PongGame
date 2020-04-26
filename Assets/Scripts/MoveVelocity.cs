@@ -16,17 +16,15 @@ namespace Alphamplyer.Pong
             get => moveSpeed;
             set => moveSpeed = value;
         }
-
-        public void InverseVelocity(bool onXAxis, bool onYAxis, Vector3? optionalModifier = null)
+        
+        public void InverseVelocity(bool onXAxis, bool onYAxis)
         {
-            Vector3 modifier = optionalModifier ?? new Vector3(1, 1, 1);
-            
             if (onXAxis && onYAxis)
-                Velocity = new Vector3(Velocity.x * -1 * modifier.x, Velocity.y * -1 * modifier.y, Velocity.z * modifier.z).normalized;
+                Velocity = new Vector3(Velocity.x * -1, Velocity.y * -1, Velocity.z).normalized;
             else if (onXAxis)
-                Velocity = new Vector3(Velocity.x * -1 * modifier.x, Velocity.y * modifier.y, Velocity.z * modifier.z).normalized;
+                Velocity = new Vector3(Velocity.x * -1, Velocity.y, Velocity.z).normalized;
             else if (onYAxis)
-                Velocity = new Vector3(Velocity.x * modifier.x, Velocity.y * -1 * modifier.y, Velocity.z * modifier.z).normalized;
+                Velocity = new Vector3(Velocity.x, Velocity.y * -1, Velocity.z).normalized;
         }
 
         private void Awake()

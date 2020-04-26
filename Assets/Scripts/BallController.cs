@@ -6,7 +6,7 @@ namespace Alphamplyer.Pong
     [RequireComponent(typeof(MoveVelocity))]
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private float modifierValue = 0.5f; 
+        [SerializeField] private float maxBounceAngleInDegrees;
         private Transform _transform;
         private MoveVelocity _moveVelocity;
         private bool _playerOneServeLastTime = true;
@@ -22,21 +22,34 @@ namespace Alphamplyer.Pong
             ResetBall();
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                var playerMoveVelocity = other.gameObject.GetComponent<MoveVelocity>();
-                Vector3? modifier = null;
+                var paddle = other.gameObject;
+                var paddleSize = paddle.GetComponent<SpriteRenderer>().bounds.size;
+                var paddlePosition = paddle.GetComponent<Transform>().position;
 
-                if (Math.Abs(playerMoveVelocity.Velocity.y) > 0.1f)
-                    modifier = new Vector3(1, modifierValue, 1);
-                    
+                Debug.Log(Mathf.Abs(_transform.position.x) - (paddleSize.x / 2 + Mathf.Abs(paddlePosition.x)));
                 
-                _moveVelocity.InverseVelocity(true, false, modifier);
+                // If the ball is behind paddle, inverse only y axis
+                if (Mathf.Abs(_transform.position.x) - (paddleSize.x / 2 + Mathf.Abs(paddlePosition.x)) > -0.001f)
+                {
+                    _moveVelocity.InverseVelocity(false, true);
+                    return;
+                }
                 
+                // Else, make ball bounce on paddle
+                
+                var relativeIntersectionY = paddlePosition.y - _transform.position.y;
+                var normalizedRelativeIntersection = relativeIntersectionY / (paddleSize.y / 2);
+                var bounceAngle = normalizedRelativeIntersection * (maxBounceAngleInDegrees * Mathf.Deg2Rad);
+
+                var velocity = _moveVelocity.Velocity;
+                var xDir = velocity.x > 0 ? -1 : 1;
+                _moveVelocity.Velocity = new Vector3(Mathf.Cos(bounceAngle) * xDir, Mathf.Sin(bounceAngle), velocity.z).normalized;
             }
-
+            
             if (other.gameObject.CompareTag("TerrainBorder"))
             {
                 _moveVelocity.InverseVelocity(false, true);
